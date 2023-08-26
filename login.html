@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>登录页</title>
+  <style>
+    .container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #f2f2f2;
+  }
+    .avatar-wrapper {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 10px;
+  }
+    .avatar-image {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+  }
+
+
+    .form-group {
+      margin-bottom: 15px;
+  }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+  }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+  }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 3%;
+  }
+
+    button:hover {
+      background-color: #45a049;
+  }
+  </style>
+</head>
+<body>
+  <div id="app" class="container">
+    <h2>用户登录</h2>
+    <div class="avatar-wrapper">
+      <img class="avatar-image" :src="selectedAvatar" alt="头像预览" @click="changeAvatar()">
+    </div><br/>
+
+    <label for="username"  @click="updateRandomName()">用户名</label>
+    <input type="text" id="username" name="username" :value="randomName"><br/>
+
+    <label for="password">密码</label>
+    <input type="password" id="password" name="password"><br/>
+
+    <button @click="login()">登录</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        
+        avatars: [
+          "img/img1.jpg",
+          "img/img2.jpg"
+        ],
+        selectedAvatar: "img/img1.jpg",
+        randomNames: ["任我行", "任你行", "任他行", "任她行", "任它行"],
+        randomName: ""
+      },
+      mounted() {
+        this.generateRandomName();
+      },
+      methods: {
+        generateRandomName() {
+          const randomIndex = Math.floor(Math.random() * this.randomNames.length);
+          this.randomName = this.randomNames[randomIndex];
+        },
+        changeAvatar() {
+          const currentIndex = this.avatars.indexOf(this.selectedAvatar);
+          const nextIndex = (currentIndex + 1) % this.avatars.length;
+          this.selectedAvatar = this.avatars[nextIndex];
+        },
+        updateRandomName() {
+          this.generateRandomName();
+        },
+        clearConfirmPassword() {
+          this.confirmPassword = '';
+        },
+        login() {
+         //在此处进行逻辑处理
+        }
+      }
+    });
+  </script>
+</body>
+</html>

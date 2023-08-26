@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>注册页</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <style>
+      .container {
+      width: 15%;
+      margin: 0 auto;
+      padding: 8%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-align: center;
+      background-color: #f2f2f2;
+    }
+      .avatar-wrapper {
+        width: 50%;
+        height: 10%;
+        margin: 0 auto;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+      .avatar-image {
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+
+      .form-group {
+        margin-bottom: 2%;
+    }
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 2%;
+    }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 2%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+      button {
+        width: 60%;
+        padding: 2%;
+        border: none;
+        border-radius: 4px;
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 3%;
+    }
+
+      button:hover {
+        background-color: #45a049;
+    }
+
+    .modal {
+        position: fixed;
+        top: 10%;
+        left: 30%;
+        width: 40%;
+        height: 40%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      .modal-content {
+        background-color: white;
+        padding: 10%;
+        border-radius: 8px;
+      }
+
+      .avatars {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .avatars img {
+        width: 20%;
+        height: 20%;
+        margin: 5%;
+        cursor: pointer;
+      }
+   @media screen and (max-width: 768px) {
+      .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 8%;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        background-color: #f2f2f2;
+      }
+        .avatar-wrapper {
+          width: 50%;
+          height: 10%;
+          margin: 0 auto;
+          border-radius: 50%;
+          overflow: hidden;
+          margin-bottom: 10px;
+      }
+        .avatar-image {
+          width: 100%;
+          height: auto;
+          cursor: pointer;
+      }
+
+
+        .form-group {
+          margin-bottom: 2%;
+      }
+
+        label {
+          display: block;
+          font-weight: bold;
+          margin-bottom: 2%;
+      }
+
+        input[type="text"],
+        input[type="password"] {
+          width: 100%;
+          padding: 2%;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+      }
+
+        button {
+          width: 60%;
+          padding: 2%;
+          border: none;
+          border-radius: 4px;
+          background-color: #4CAF50;
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
+          margin-top: 3%;
+      }
+
+        button:hover {
+          background-color: #45a049;
+      }
+
+      .modal {
+          position: fixed;
+          top: 10%;
+          left: 30%;
+          width: 40%;
+          height: 40%;
+          background-color: rgba(0, 0, 0, 0.5);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+        }
+
+        .modal-content {
+          background-color: white;
+          padding: 10%;
+          border-radius: 8px;
+        }
+
+        .avatars {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .avatars img {
+          width: 20%;
+          height: 20%;
+          margin: 5%;
+          cursor: pointer;
+        }
+      }
+    
+  </style>
+</head>
+<body>
+  <div id="app" class="container">
+    <h2>用户注册</h2>
+    <div class="avatar-wrapper">
+      <img class="avatar-image" :src="selectedAvatar" @click="showAvatarModal" />
+      <!-- 头像选择模态框 -->
+      <div v-if="showModal" class="modal">
+        <div class="modal-content">
+          <h2>选择一个头像</h2>
+          <div class="avatars">
+            <img v-for="avatar in avatars" :src="avatar" @click="selectAvatar(avatar)" :key="avatar" />
+          </div>
+          <button @click="hideAvatarModal">取消</button>
+        </div>
+      </div>
+    </div><br/>
+
+    <label for="username" >用户名<span><img style="height: 20px; position:relative; top: 4px;" src="img/emoji_u1f3b2.png" @click="updateRandomName()"></span></label>
+    <input type="text" id="username" name="username" :value="randomName"><br/>
+
+    <label for="password">密码</label>
+    <input type="password" id="password" name="password"><br/>
+
+    <label for="confirm-password">确认密码</label>
+    <input type="password" id="confirm-password" name="confirm-password"><br/>
+
+    <button @click="login()">注册</button>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        showModal: false,
+        avatars: [
+          "img/img1.jpg",
+          "img/img2.jpg"
+        ],
+        selectedAvatar: "img/img1.jpg",
+        randomNames: ["任我行", "任你行", "任他行", "任她行", "任它行"],
+        randomName: ""
+      },
+      mounted() {
+        this.generateRandomName();
+      },
+      methods: {
+        // 模态框
+        showAvatarModal() {
+          this.showModal = true;
+        },
+        hideAvatarModal() {
+          this.showModal = false;
+        },
+        selectAvatar(avatar) {
+          this.selectedAvatar = avatar;
+          this.hideAvatarModal();
+        },
+
+
+        generateRandomName() {
+          const randomIndex = Math.floor(Math.random() * this.randomNames.length);
+          this.randomName = this.randomNames[randomIndex];
+        },
+        changeAvatar() {
+          const currentIndex = this.avatars.indexOf(this.selectedAvatar);
+          const nextIndex = (currentIndex + 1) % this.avatars.length;
+          this.selectedAvatar = this.avatars[nextIndex];
+        },
+        updateRandomName() {
+          this.generateRandomName();
+        },
+        clearConfirmPassword() {
+          this.confirmPassword = '';
+        },
+        login() {
+          const password = document.getElementById('password').value;
+          const confirmPassword = document.getElementById('confirm-password').value;
+          
+          if (password !== confirmPassword) {
+            alert("密码和确认密码不一致，请重新输入！");
+            return;
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
