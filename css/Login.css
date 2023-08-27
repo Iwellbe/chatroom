@@ -1,0 +1,244 @@
+
+.container {
+    width: 15%;
+    margin: 0 auto;
+    padding: 8%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #f2f2f2;
+  }
+    .avatar-wrapper {
+      width: 50%;
+      height: 10%;
+      margin: 0 auto;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 10px;
+  }
+    .avatar-image {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+  }
+
+  /* 页面美化 */
+    .form-group {
+      margin-bottom: 2%;
+  }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 2%;
+  }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 2%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+  }
+
+    button {
+      width: 60%;
+      padding: 2%;
+      border: none;
+      border-radius: 4px;
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 3%;
+  }
+
+    button:hover {
+      background-color: #45a049;
+  }
+
+  /* 模态框样式 */
+  .modal {
+      position: fixed;
+      top: 10%;
+      left: 30%;
+      width: 40%;
+      height: 40%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 10%;
+      border-radius: 8px;
+    }
+
+    .avatars {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .avatars img {
+      width: 10%;
+      height: 10%;
+      margin: 5%;
+      cursor: pointer;
+    }
+
+    /* 骰子动画 */
+    .dice img{
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      position: relative;
+      top: 4px;
+      display: inline-block;
+    }
+    .animate {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      position: relative;
+      top: 4px;
+      display: inline-block;
+      animation: roll 1s ease-in-out; /* 添加动画效果 */
+    }
+
+    @keyframes roll {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(-90deg); }
+      50% { transform: rotate(90deg); }
+      75% { transform: rotate(-90deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    /* 移动设备视口 */
+ @media screen and (max-width: 768px) {
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 8%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-align: center;
+      background-color: #f2f2f2;
+    }
+      .avatar-wrapper {
+        width: 50%;
+        height: 10%;
+        margin: 0 auto;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+      .avatar-image {
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    /* 页面美化 */
+      .form-group {
+        margin-bottom: 2%;
+    }
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 2%;
+    }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 2%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+      button {
+        width: 60%;
+        padding: 2%;
+        border: none;
+        border-radius: 4px;
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 3%;
+    }
+
+      button:hover {
+        background-color: #45a049;
+    }
+
+    /* 模态框样式 */
+    .modal {
+        position: fixed;
+        top: 10%;
+        left: 30%;
+        width: 40%;
+        height: 40%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      .modal-content {
+        background-color: white;
+        padding: 10%;
+        border-radius: 8px;
+      }
+
+      .modal-content h2{
+        display: none;
+      }
+
+      .avatars {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .avatars img {
+        width: 20%;
+        height: 20%;
+        margin: 5%;
+        cursor: pointer;
+      }
+      /* 骰子动画 */
+      .dice img{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        position: relative;
+        top: 4px;
+        display: inline-block;
+      }
+      .animate {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        position: relative;
+        top: 4px;
+        display: inline-block;
+        animation: roll 1s ease-in-out; /* 添加动画效果 */
+      }
+
+      @keyframes roll {
+        0% { transform: rotate(0deg); }
+        25% { transform: rotate(-90deg); }
+        50% { transform: rotate(90deg); }
+        75% { transform: rotate(-90deg); }
+        100% { transform: rotate(0deg); }
+      }
+    }
