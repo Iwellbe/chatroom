@@ -65,7 +65,13 @@ new Vue({
         this.confirmPassword = '';
       },
       login() {
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
         
+        if (password !== confirmPassword) {
+          alert("密码和确认密码不一致，请重新输入！");
+          return;
+        }
       }
     }
   });
